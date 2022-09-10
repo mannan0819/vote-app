@@ -4,6 +4,14 @@ import { z } from "zod";
 
 export const questionRouter = trpc
   .router()
+  .query("getById", {
+    input: z.object({
+      id: z.string(),
+    }),
+    async resolve({ input }) {
+      return prisma.voteQuestion.findFirst({ where: { id: input.id } });
+    },
+  })
   .query("getAll", {
     async resolve() {
       return prisma.voteQuestion.findMany();
