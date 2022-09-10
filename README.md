@@ -2,7 +2,7 @@
 
 ### TODO 
 
-- [ ] SSR
+- [x] SSR
 - [ ] Options Model
 - [ ] Voting behaviour
 - [ ] time out behaviour

@@ -17,7 +17,8 @@ export const questionRouter = createRouter()
     },
   })
   .query("getAll", {
-    async resolve() {
+    async resolve({ ctx }) {
+      console.log("FROM ROUTER", ctx.userToken);
       return prisma.voteQuestion.findMany();
     },
   })

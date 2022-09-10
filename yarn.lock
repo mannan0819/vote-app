@@ -51,10 +51,10 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
-"@next/env@12.2.5":
-  "integrity" "sha512-vLPLV3cpPGjUPT3PjgRj7e3nio9t6USkuew3JE/jMeon/9Mvp1WyR18v3iwnCuX7eUAm1HmAbJHHLAbcu/EJcw=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.2.5.tgz"
-  "version" "12.2.5"
+"@next/env@12.3.1-canary.0":
+  "integrity" "sha512-W1eRfjNckMVB60gHeSM76gLLAKoWqzMPURa524Nn2+XvTbCKYJsjZjIFwtW1B/XYh2IyDcZ0GWtIDS8MF48gKg=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.3.1-canary.0.tgz"
+  "version" "12.3.1-canary.0"
 
 "@next/eslint-plugin-next@12.2.5":
   "integrity" "sha512-VBjVbmqEzGiOTBq4+wpeVXt/KgknnGB6ahvC/AxiIGnN93/RCSyXhFRI4uSfftM2Ba3w7ZO7076bfKasZsA0fw=="
@@ -63,10 +63,10 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-darwin-arm64@12.2.5":
-  "integrity" "sha512-VOPWbO5EFr6snla/WcxUKtvzGVShfs302TEMOtzYyWni6f9zuOetijJvVh9CCTzInnXAZMtHyNhefijA4HMYLg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.2.5.tgz"
-  "version" "12.2.5"
+"@next/swc-darwin-arm64@12.3.1-canary.0":
+  "integrity" "sha512-Od6zaLkL3U9V+ccg8gsFMwWlQJii0lB3L84PPLrkRl90nbz9Z1fDneS5H+AnUS5SYWXKE9BfdRwGXG9kvi2xzA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.3.1-canary.0.tgz"
+  "version" "12.3.1-canary.0"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -111,10 +111,10 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz"
   "version" "1.1.4"
 
-"@swc/helpers@0.4.3":
-  "integrity" "sha512-6JrF+fdUK2zbGpJIlN7G3v966PQjyx/dPt1T9km2wj+EUBqgrxCk3uX4Kct16MIm9gGxfKRcfax2hVf5jvlTzA=="
-  "resolved" "https://registry.npmjs.org/@swc/helpers/-/helpers-0.4.3.tgz"
-  "version" "0.4.3"
+"@swc/helpers@0.4.11":
+  "integrity" "sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw=="
+  "resolved" "https://registry.npmjs.org/@swc/helpers/-/helpers-0.4.11.tgz"
+  "version" "0.4.11"
   dependencies:
     "tslib" "^2.4.0"
 
@@ -1478,31 +1478,31 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next@*", "next@12.2.5":
-  "integrity" "sha512-tBdjqX5XC/oFs/6gxrZhjmiq90YWizUYU6qOWAfat7zJwrwapJ+BYgX2PmiacunXMaRpeVT4vz5MSPSLgNkrpA=="
-  "resolved" "https://registry.npmjs.org/next/-/next-12.2.5.tgz"
-  "version" "12.2.5"
+"next@*", "next@^12.3.1-canary.0":
+  "integrity" "sha512-yjcqgGtX6+LlgTRM6wQMlQcYgPlIM2rX3U0FzGw5Yy7MG31vPrVzhybD1wYznCaFE6sye6IyUWlMfqgojbrfag=="
+  "resolved" "https://registry.npmjs.org/next/-/next-12.3.1-canary.0.tgz"
+  "version" "12.3.1-canary.0"
   dependencies:
-    "@next/env" "12.2.5"
-    "@swc/helpers" "0.4.3"
+    "@next/env" "12.3.1-canary.0"
+    "@swc/helpers" "0.4.11"
     "caniuse-lite" "^1.0.30001332"
     "postcss" "8.4.14"
-    "styled-jsx" "5.0.4"
+    "styled-jsx" "5.0.6"
     "use-sync-external-store" "1.2.0"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "12.2.5"
-    "@next/swc-android-arm64" "12.2.5"
-    "@next/swc-darwin-arm64" "12.2.5"
-    "@next/swc-darwin-x64" "12.2.5"
-    "@next/swc-freebsd-x64" "12.2.5"
-    "@next/swc-linux-arm-gnueabihf" "12.2.5"
-    "@next/swc-linux-arm64-gnu" "12.2.5"
-    "@next/swc-linux-arm64-musl" "12.2.5"
-    "@next/swc-linux-x64-gnu" "12.2.5"
-    "@next/swc-linux-x64-musl" "12.2.5"
-    "@next/swc-win32-arm64-msvc" "12.2.5"
-    "@next/swc-win32-ia32-msvc" "12.2.5"
-    "@next/swc-win32-x64-msvc" "12.2.5"
+    "@next/swc-android-arm-eabi" "12.3.1-canary.0"
+    "@next/swc-android-arm64" "12.3.1-canary.0"
+    "@next/swc-darwin-arm64" "12.3.1-canary.0"
+    "@next/swc-darwin-x64" "12.3.1-canary.0"
+    "@next/swc-freebsd-x64" "12.3.1-canary.0"
+    "@next/swc-linux-arm-gnueabihf" "12.3.1-canary.0"
+    "@next/swc-linux-arm64-gnu" "12.3.1-canary.0"
+    "@next/swc-linux-arm64-musl" "12.3.1-canary.0"
+    "@next/swc-linux-x64-gnu" "12.3.1-canary.0"
+    "@next/swc-linux-x64-musl" "12.3.1-canary.0"
+    "@next/swc-win32-arm64-msvc" "12.3.1-canary.0"
+    "@next/swc-win32-ia32-msvc" "12.3.1-canary.0"
+    "@next/swc-win32-x64-msvc" "12.3.1-canary.0"
 
 "node-releases@^2.0.6":
   "integrity" "sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg=="
@@ -1980,10 +1980,10 @@
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
 
-"styled-jsx@5.0.4":
-  "integrity" "sha512-sDFWLbg4zR+UkNzfk5lPilyIgtpddfxXEULxhujorr5jtePTUqiPDc5BC0v1NRqTr/WaFBGQQUoYToGlF4B2KQ=="
-  "resolved" "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.4.tgz"
-  "version" "5.0.4"
+"styled-jsx@5.0.6":
+  "integrity" "sha512-xOeROtkK5MGMDimBQ3J6iPId8q0t/BDoG5XN6oKkZClVz9ISF/hihN8OCn2LggMU6N32aXnrXBdn3auSqNS9fA=="
+  "resolved" "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.6.tgz"
+  "version" "5.0.6"
 
 "superjson@^1.9.1":
   "integrity" "sha512-oT3HA2nPKlU1+5taFgz/HDy+GEaY+CWEbLzaRJVD4gZ7zMVVC4GDNFdgvAZt6/VuIk6D2R7RtPAiCHwmdzlMmg=="

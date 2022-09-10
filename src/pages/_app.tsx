@@ -8,13 +8,20 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
 };
 
+function getBaseUrl() {
+  if (process.browser) return "";
+  if (process.env.VERCEL_URL === "development")
+    return `https://${process.env.VERCEL_URL}`;
+  return `http://localhost:${process.env.PORT ?? 3000}`;
+}
+
 export default withTRPC<AppRouter>({
   config({ ctx }) {
     /**
      * If you want to use SSR, you need to use the server's full URL
      * @link https://trpc.io/docs/ssr
      */
-    const url = "/api/trpc";
+    const url = `${getBaseUrl()}/api/trpc`;
 
     return {
       url,
@@ -28,5 +35,5 @@ export default withTRPC<AppRouter>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: false,
+  ssr: true,
 })(MyApp);
