@@ -16,9 +16,11 @@ model VoteQuestion {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  userToken String
+  userToken String @db.VarChar(255)
 
   endsAt DateTime?
 
   question String @db.VarChar(5000)
+
+  @@index([userToken])
 }
