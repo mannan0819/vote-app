@@ -30,6 +30,11 @@ export default withTRPC<AppRouter>({
     const url = `${getBaseUrl()}/api/trpc`;
 
     return {
+      headers() {
+        return {
+          cookie: ctx?.req?.headers?.cookie,
+        };
+      },
       url,
       transformer: superjson,
       /**
