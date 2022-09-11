@@ -16,7 +16,7 @@ const QuestionCreater: React.FC = () => {
   return (
     <input
       ref={inputRef}
-      className="border border-gray-300 rounded-md p-2"
+      className="border border-gray-700 rounded-md p-2 bg-gray-800"
       disabled={isLoading}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
@@ -35,14 +35,17 @@ const Home: NextPage = () => {
     <div>Loading...</div>
   ) : (
     <div className="flex flex-col p-6 pl-10">
-      <div className="text-2xl text-red-600 pb-4">Questions</div>
+      <div className="text-2xl text-lime-500 pb-4">
+        <i className="bi bi-check2-square text-teal-400 pr-2" />
+        Polls
+      </div>
 
 
       {data.map((question) => (
         <Link href={`/question/${question.id}`} key={question.id}>
           <a>
             <div >{question.question}
-              <i className="bi-alarm text-teal-400" /></div>
+              <i className="bi bi-check2-square text-teal-400" /></div>
           </a>
         </Link>
       ))}

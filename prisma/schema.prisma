@@ -16,11 +16,22 @@ model VoteQuestion {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  userToken String @db.VarChar(255)
+  userToken String    @db.VarChar(255)
+  endsAt    DateTime?
+  question  String    @db.VarChar(5000)
 
-  endsAt DateTime?
-
-  question String @db.VarChar(5000)
+  options Option[]
 
   @@index([userToken])
+}
+
+model Option {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  text  String @db.VarChar(5000)
+  value String @db.VarChar(255)
+
+  voteQuestion   VoteQuestion @relation(fields: [voteQuestionId], references: [id])
+  voteQuestionId String
 }
