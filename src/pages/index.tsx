@@ -37,10 +37,12 @@ const Home: NextPage = () => {
     <div className="flex flex-col p-6 pl-10">
       <div className="text-2xl text-red-600 pb-4">Questions</div>
 
+
       {data.map((question) => (
         <Link href={`/question/${question.id}`} key={question.id}>
           <a>
-            <div >{question.question}</div>
+            <div >{question.question}
+              <i className="bi-alarm text-teal-400" /></div>
           </a>
         </Link>
       ))}

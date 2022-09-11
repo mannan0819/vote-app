@@ -1,11 +1,17 @@
 import { withTRPC } from "@trpc/next";
 import { AppType } from "next/dist/shared/lib/utils";
+import Head from "next/head";
 import superjson from "superjson";
 import { AppRouter } from "../backend/router";
 import "../styles/globals.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  return <div>
+    <Head>
+      <title>VOTES - APP By Mannan</title>
+    </Head>
+    <Component {...pageProps} /></div >;
 };
 
 function getBaseUrl() {
