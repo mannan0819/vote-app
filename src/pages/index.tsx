@@ -1,16 +1,20 @@
+import { VoteQuestion } from "@prisma/client";
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { trpc } from "../utils/trpc";
 
 const QuestionCreater: React.FC = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const client = trpc.useContext();
+  const router = useRouter();
   const { mutate, isLoading } = trpc.useMutation("question.create", {
-    onSuccess: () => {
-      client.invalidateQueries("question.getAll");
-      if (!inputRef.current) return;
-      inputRef.current.value = "";
+    onSuccess: (data) => {
+      // client.invalidateQueries("question.getAll");
+      // if (!inputRef.current) return;
+      // inputRef.current.value = "";
+      if ("id" in data) router.push(`/options/${data.id}`);
     },
   });
   return (
@@ -40,12 +44,13 @@ const Home: NextPage = () => {
         Polls
       </div>
 
-
       {data.map((question) => (
         <Link href={`/question/${question.id}`} key={question.id}>
           <a>
-            <div >{question.question}
-              <i className="bi bi-check2-square text-teal-400" /></div>
+            <div>
+              {question.question}
+              <i className="bi bi-check2-square text-teal-400" />
+            </div>
           </a>
         </Link>
       ))}
