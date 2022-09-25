@@ -9,9 +9,14 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return <div>
     <Head>
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito"
+        rel="stylesheet"
+      />
       <title>VOTES - APP By Mannan</title>
     </Head>
-    <Component {...pageProps} /></div >;
+    <Component {...pageProps} />
+  </div >;
 };
 
 function getBaseUrl() {

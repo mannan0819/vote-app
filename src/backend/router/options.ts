@@ -6,8 +6,7 @@ import { createRouter } from "./context";
 export const optionsRouter = createRouter()
     .mutation("create", {
         input: z.object({
-            text: z.string().min(5).max(600),
-            value: z.string().min(5).max(600),
+            text: z.string().min(1).max(5000),
             questionId: z.string(),
         }),
         async resolve({ input, ctx }) {
@@ -15,9 +14,32 @@ export const optionsRouter = createRouter()
             return prisma.option.create({
                 data: {
                     text: input.text,
-                    value: input.value,
                     voteQuestionId: input.questionId,
                 },
             });
         },
+    })
+    .mutation("createMany", {
+        input: z.object({
+            options: z.array(
+                z.object({
+                    text: z.string().min(1).max(5000),
+                })
+            ),
+            questionId: z.string(),
+        }),
+        async resolve({ input }) {
+            return prisma.voteQuestion.update({
+                where: {
+                    id: input.questionId,
+                },
+                data: {
+                    options: {
+                        create: input.options.map((option) => ({
+                            text: option.text,
+                        })),
+                    },
+                }
+            });
+        }
     });

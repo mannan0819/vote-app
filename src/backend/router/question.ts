@@ -11,6 +11,9 @@ export const questionRouter = createRouter()
     async resolve({ input, ctx }) {
       const question = await prisma.voteQuestion.findFirst({
         where: { id: input.id },
+        include: {
+          options: true
+        },
       });
 
       return { question, isOwner: question?.userToken === ctx.userToken };

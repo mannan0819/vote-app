@@ -29,8 +29,7 @@ model Option {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  text  String @db.VarChar(5000)
-  value String @db.VarChar(255)
+  text String @db.VarChar(5000)
 
   voteQuestion   VoteQuestion @relation(fields: [voteQuestionId], references: [id])
   voteQuestionId String
