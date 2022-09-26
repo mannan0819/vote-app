@@ -6,10 +6,8 @@ export default function QuestionId() {
   const id = router.query.id;
   if (typeof id !== "string") return null;
   const { data, isLoading } = trpc.useQuery(["question.getById", { id }]);
-  // console.log(data)
 
   if (!data) return <div> NO QUESTION FOUND.</div>;
-  // console.log(data);
   return isLoading || !data ? (
     <div>Loading...</div>
   ) : (

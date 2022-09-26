@@ -34,7 +34,6 @@ const QuestionCreater: React.FC = () => {
 const Home: NextPage = () => {
   const { data, isLoading } = trpc.useQuery(["question.getAll"]);
 
-  // console.log(data);
   return isLoading || !data ? (
     <div>Loading...</div>
   ) : (

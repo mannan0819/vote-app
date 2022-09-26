@@ -7,8 +7,6 @@ export async function createContext(opts?: trpcNext.CreateNextContextOptions) {
   // Will be available as `ctx` in all your resolvers
 
   // This is just an example of something you'd might want to do in your ctx fn
-  //   console.log(opts?.req);
-  //   console.log(opts?.req?.cookies["user_token"] ?? "no token");
   return { userToken: opts?.req?.cookies["user_token"], req: opts?.req };
 }
 type Context = trpc.inferAsyncReturnType<typeof createContext>;
