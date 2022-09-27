@@ -12,7 +12,7 @@ export const questionRouter = createRouter()
       const question = await prisma.voteQuestion.findFirst({
         where: { id: input.id },
         include: {
-          options: true
+          options: true,
         },
       });
 
@@ -21,8 +21,12 @@ export const questionRouter = createRouter()
   })
   .query("getAll", {
     async resolve({ ctx }) {
-      if (!ctx.userToken) { return []; }
-      return prisma.voteQuestion.findMany({ where: { userToken: ctx.userToken } });
+      if (!ctx.userToken) {
+        return [];
+      }
+      return prisma.voteQuestion.findMany({
+        where: { userToken: ctx.userToken },
+      });
     },
   })
   .mutation("create", {

@@ -33,4 +33,18 @@ model Option {
 
   voteQuestion   VoteQuestion @relation(fields: [voteQuestionId], references: [id])
   voteQuestionId String
+
+  votes Votes[]
+}
+
+model Votes {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  userToken String @db.VarChar(255)
+
+  option   Option @relation(fields: [optionId], references: [id])
+  optionId String
+
+  @@index([userToken])
 }
