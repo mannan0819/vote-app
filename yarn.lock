@@ -2004,6 +2004,11 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
+"tailwindcss-percentage-width@^1.0.3":
+  "integrity" "sha512-xfNi7eY1CWqey/Bx+8v3kMHorUP2beqjJn7wv5hE03foA+S+XhNuWaYSovWebqCkVh3EuK1DyJmxTdsYSaR8Ww=="
+  "resolved" "https://registry.npmjs.org/tailwindcss-percentage-width/-/tailwindcss-percentage-width-1.0.3.tgz"
+  "version" "1.0.3"
+
 "tailwindcss@^3.1.8":
   "integrity" "sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.8.tgz"

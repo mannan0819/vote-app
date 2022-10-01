@@ -34,10 +34,10 @@ model Option {
   voteQuestion   VoteQuestion @relation(fields: [voteQuestionId], references: [id])
   voteQuestionId String
 
-  votes Votes[]
+  votes Voting[]
 }
 
-model Votes {
+model Voting {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
