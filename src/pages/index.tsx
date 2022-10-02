@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { MLoading } from "../components/MLodaing";
 import { trpc } from "../utils/trpc";
 
 const QuestionCreater: React.FC = () => {
@@ -35,12 +36,12 @@ const Home: NextPage = () => {
   const { data, isLoading } = trpc.useQuery(["question.getAll"]);
 
   return isLoading || !data ? (
-    <div>Loading...</div>
+    <MLoading />
   ) : (
     <div className="flex flex-col p-6 pl-10">
       <div className="text-2xl text-lime-500 pb-4">
         <i className="bi bi-check2-square text-teal-400 pr-2" />
-        Polls
+        Votes App
       </div>
 
       {data.map((question) => (
