@@ -35,4 +35,21 @@ export const votesRouter = createRouter()
       });
       return votes;
     },
+  })
+  .query("getTotalVotes", {
+    input: z.object({
+      optionsIds: z.array(z.string()),
+    }),
+    async resolve({ input }) {
+      const votes = await prisma.voting.groupBy({
+        by: ["optionId"],
+        where: {
+          optionId: { in: input.optionsIds }
+        },
+        _count: {
+          optionId: true
+        }
+      });
+      return votes;
+    },
   });

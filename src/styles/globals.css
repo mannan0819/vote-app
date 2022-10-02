@@ -12,6 +12,26 @@ input:-webkit-autofill {
   -webkit-animation-fill-mode: both;
 }
 
+.gray {
+  background: #ddd;
+}
+.contents-wrapper, .label, .contents {
+  display: inline-block;
+}
+
+.contents {/* no left-right padding at beginning */
+  white-space: nowrap; /* keeps text all on same line */
+
+  -webkit-transition: width 1s ease-in-out, padding-left 1s ease-in-out, padding-right 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out, padding-left 1s ease-in-out, padding-right 1s ease-in-out;
+  -o-transition: width 1s ease-in-out, padding-left 1s ease-in-out, padding-right 1s ease-in-out;
+  transition: width 1s ease-in-out, padding-left 1s ease-in-out, padding-right 1s ease-in-out;
+}
+.label:hover + .contents-wrapper .contents {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 /* Change the white to any color ;) */
 /* input:-webkit-autofill,
 input:-webkit-autofill:hover, 
