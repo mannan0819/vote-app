@@ -21,7 +21,7 @@ const QuestionCreater: React.FC = () => {
   return (
     <input
       ref={inputRef}
-      className="border border-gray-700 rounded-md p-2 bg-gray-800"
+      className="border border-gray-700 rounded-md p-2 bg-gray-800 "
       disabled={isLoading}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
@@ -47,10 +47,14 @@ const Home: NextPage = () => {
       {data.map((question) => (
         <Link href={`/question/${question.id}`} key={question.id}>
           <a>
-            <div>
-              {question.question}
-              <i className="bi bi-check2-square text-teal-400" />
+            <div className="flex flex-row">
+              <i className="bi bi bi-journals text-indigo-600 text-2xl p-2 mt-1" />
+              <div className="flex flex-col mt-2">
+                <span className="text-lg">{question.question}</span>
+                <span className="text-xs">{question.createdAt.toDateString()}</span>
+              </div>
             </div>
+
           </a>
         </Link>
       ))}
