@@ -35,10 +35,10 @@ export function MOption({ option, votesData, votes, totalVotes, onChange, checke
         <p className={"ml-2 pl-1 text-2xl font-bold " +
             (!!votesData && votes?.some(v => v.optionId === option.id) ?
                 "bg-yellow-50 contents text-blue-800" : "text-white")}
-            style={{
-                width: ((votes && votes.find(v => v.optionId === option.id)?._count) ?
-                    (Number(votes.find(v => v.optionId === option.id)?._count.optionId) / totalVotes) * 100 : 0) + '%'
-            }}>
+            style={votesData ? {
+                width: ((votes && votes.find(v => v.optionId === option.id)?._count) &&
+                    (Number(votes.find(v => v.optionId === option.id)?._count.optionId) / totalVotes) * 100) + '%'
+            } : {}}>
             {option.text}
         </p>
     </label>
