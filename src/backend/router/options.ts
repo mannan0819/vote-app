@@ -42,6 +42,7 @@ export const optionsRouter = createRouter()
         })
       ),
       questionId: z.string(),
+      endsAt: z.date().nullable(),
     }),
     async resolve({ input }) {
       return prisma.voteQuestion.update({
@@ -49,6 +50,7 @@ export const optionsRouter = createRouter()
           id: input.questionId,
         },
         data: {
+          endsAt: input.endsAt,
           options: {
             create: input.options.map((option) => ({
               text: option.text,

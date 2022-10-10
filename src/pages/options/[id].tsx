@@ -1,5 +1,7 @@
+import dayjs, { Dayjs } from "dayjs";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React, { useState } from "react";
+import MTimePicker from "../../components/MTimePicker";
 import { trpc } from "../../utils/trpc";
 
 export default function NewVote() {
@@ -20,6 +22,7 @@ export default function NewVote() {
     { text: "yes", questionId: questionId },
     { text: "no", questionId: questionId },
   ]);
+  const [endsAt, setEndsAt] = React.useState<Dayjs | null>(dayjs().add(1, 'hour'));
   if (!data) return <div> NO QUESTION FOUND.</div>;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +32,7 @@ export default function NewVote() {
     // };
     // const option = target.option.value;
     if (!options || options.length === 0) return;
-    mutate({ options, questionId: data.question?.id ?? "" });
+    mutate({ options, questionId: data.question?.id ?? "", endsAt: endsAt?.toDate() || null });
     // mutate({ option, questionId: id });
     router.push(`/question/${id}`);
   };
@@ -37,12 +40,15 @@ export default function NewVote() {
   return isLoading || !data ? (
     <div>Loading...</div>
   ) : (
-    <div className="flex flex-col p-6">
+    <div className="flex flex-col p-10">
       <div className="flex flex-col pb-2">
         <div className="text-2xl text-lime-400">{data.question?.question}</div>
         <div></div>
       </div>
-      <form className="p-6" onSubmit={handleSubmit}>
+      <form className="p-2" onSubmit={handleSubmit}>
+        <div className="text-white pb-2">
+          <MTimePicker label="Ends At:" value={endsAt} setValue={setEndsAt} />
+        </div>
         {options.map((option, index) => (
           <div className="mb-4" key={index}>
             <label className="block text-slate-300 text-sm font-bold mb-2">
