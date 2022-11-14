@@ -18,7 +18,7 @@ export default function Nav() {
                     <ul className="flex flex-col p-4 mt-4 rounded-lg border  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
                         <li>
                             <Link href={`/`}>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-lg bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white" aria-current="page">Home</a>
+                                <a href="#" className="block py-2 pr-4 pl-3 text-lg rounded md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md::hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Home</a>
                             </Link>
                         </li>
                         <li>
