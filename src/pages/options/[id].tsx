@@ -1,6 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { MLoading } from "../../components/MLodaing";
 import MTimePicker from "../../components/MTimePicker";
 import { trpc } from "../../utils/trpc";
 
@@ -27,18 +28,14 @@ export default function NewVote() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // const target = e.target as typeof e.target & {
-    //     option: { value: string };
-    // };
-    // const option = target.option.value;
     if (!options || options.length === 0) return;
     mutate({ options, questionId: data.question?.id ?? "", endsAt: endsAt?.toDate() || null });
-    // mutate({ option, questionId: id });
+
     router.push(`/question/${id}`);
   };
 
   return isLoading || !data ? (
-    <div>Loading...</div>
+    <MLoading />
   ) : (
     <div className="flex flex-col p-10">
       <div className="flex flex-col pb-2">
