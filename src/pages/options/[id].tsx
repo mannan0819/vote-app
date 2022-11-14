@@ -9,7 +9,7 @@ export default function NewVote() {
   const router = useRouter();
   let id = router.query.id;
   if (typeof id !== "string") id = "";
-  const { mutate } = trpc.useMutation("options.createMany", {
+  const { mutateAsync } = trpc.useMutation("options.createMany", {
     onSuccess: () => {
       // client.invalidateQueries("question.getAll");
       // if (!inputRef.current) return;
@@ -18,20 +18,25 @@ export default function NewVote() {
   });
 
   const { data, isLoading } = trpc.useQuery(["question.getById", { id }]);
-  const questionId = data?.question?.id ?? "";
+  const questionId = data?.question?.id;
+  const [newQuestion, setNewQuestion] = useState("");
   const [options, setOptions] = useState([
     { text: "yes", questionId: questionId },
     { text: "no", questionId: questionId },
   ]);
   const [endsAt, setEndsAt] = React.useState<Dayjs | null>(dayjs().add(1, 'hour'));
-  if (!data) return <div> NO QUESTION FOUND.</div>;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!options || options.length === 0) return;
-    mutate({ options, questionId: data.question?.id ?? "", endsAt: endsAt?.toDate() || null });
-
-    router.push(`/question/${id}`);
+    const savedQ = await mutateAsync({
+      options,
+      questionId: data?.question?.id ?? null,
+      questionText: data?.question?.question ?? newQuestion,
+      endsAt: endsAt?.toDate() || null
+    });
+    console.log('savedQ', savedQ)
+    router.push(`/question/${savedQ.id}`);
   };
 
   return isLoading || !data ? (
@@ -39,7 +44,16 @@ export default function NewVote() {
   ) : (
     <div className="flex flex-col p-10">
       <div className="flex flex-col pb-2">
-        <div className="text-2xl text-lime-400">{data.question?.question}</div>
+        {data?.question ? <div className="text-2xl text-lime-400">{data.question?.question}</div> :
+          <input
+            className="shadow appearance-none border text-xl rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="yes"
+            type="text"
+            placeholder="Question"
+            value={newQuestion}
+            onChange={(e) => setNewQuestion(e.target.value)}
+          />
+        }
         <div></div>
       </div>
       <form className="p-2" onSubmit={handleSubmit}>

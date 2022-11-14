@@ -41,22 +41,38 @@ export const optionsRouter = createRouter()
           text: z.string().min(1).max(5000),
         })
       ),
-      questionId: z.string(),
+      questionId: z.string().nullable(),
       endsAt: z.date().nullable(),
+      questionText: z.string().min(1).max(5000).nullable(),
     }),
-    async resolve({ input }) {
-      return prisma.voteQuestion.update({
-        where: {
-          id: input.questionId,
-        },
-        data: {
-          endsAt: input.endsAt,
-          options: {
-            create: input.options.map((option) => ({
-              text: option.text,
-            })),
+    async resolve({ input, ctx }) {
+      if (!input.questionId) {
+        return prisma.voteQuestion.create({
+          data: {
+            question: input.questionText ?? '',
+            userToken: ctx.userToken ?? '',
+            endsAt: input.endsAt,
+            options: {
+              create: input.options.map((option) => ({
+                text: option.text,
+              })),
+            },
           },
-        },
-      });
+        });
+      } else {
+        return prisma.voteQuestion.update({
+          where: {
+            id: input.questionId,
+          },
+          data: {
+            endsAt: input.endsAt,
+            options: {
+              create: input.options.map((option) => ({
+                text: option.text,
+              })),
+            },
+          },
+        })
+      }
     },
   });

@@ -1,4 +1,3 @@
-import { VoteQuestion } from "@prisma/client";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -8,13 +7,9 @@ import { trpc } from "../utils/trpc";
 
 const QuestionCreater: React.FC = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const client = trpc.useContext();
   const router = useRouter();
   const { mutate, isLoading } = trpc.useMutation("question.create", {
     onSuccess: (data) => {
-      // client.invalidateQueries("question.getAll");
-      // if (!inputRef.current) return;
-      // inputRef.current.value = "";
       if ("id" in data) router.push(`/options/${data.id}`);
     },
   });
@@ -22,6 +17,7 @@ const QuestionCreater: React.FC = () => {
     <input
       ref={inputRef}
       className="border border-gray-700 rounded-md p-2 bg-gray-800 "
+      placeholder="Start a new question..."
       disabled={isLoading}
       onKeyDown={(event) => {
         if (event.key === "Enter") {

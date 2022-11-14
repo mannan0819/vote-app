@@ -9,6 +9,7 @@ export const questionRouter = createRouter()
       id: z.string(),
     }),
     async resolve({ input, ctx }) {
+      if (input.id === 'new') return { question: undefined, isOwner: true };
       const question = await prisma.voteQuestion.findFirst({
         where: { id: input.id },
         include: {
@@ -36,7 +37,7 @@ export const questionRouter = createRouter()
   })
   .mutation("create", {
     input: z.object({
-      question: z.string().min(5).max(600),
+      question: z.string().min(5).max(5000),
     }),
     async resolve({ input, ctx }) {
       if (!ctx.userToken) return { error: "Unauthorized" };

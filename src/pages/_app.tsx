@@ -5,6 +5,7 @@ import superjson from "superjson";
 import { AppRouter } from "../backend/router";
 import "../styles/globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Nav from "../components/NavBar";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return <div>
@@ -15,7 +16,10 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       />
       <title>VOTES - APP By Mannan</title>
     </Head>
-    <Component {...pageProps} />
+    <Nav />
+    <div className="container justify-between items-center mx-auto">
+      <Component {...pageProps} />
+    </div>
   </div >;
 };
 
